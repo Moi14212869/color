@@ -126,8 +126,11 @@ const preview = document.getElementById("preview");
 const hex = document.getElementById("hex");
 const rgb = document.getElementById("rgb");
 const hsl = document.getElementById("hsl");
+let score = localStorage. getItem('score') || 0;
 
 function update(color) {
+    score = score + 10;
+    localStorage.setItem("score", score);
     preview.style.background = color;
     hex.textContent = color.toUpperCase();
 
