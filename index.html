@@ -129,8 +129,6 @@ const hsl = document.getElementById("hsl");
 let score = localStorage. getItem('score') || 0;
 
 function update(color) {
-    score = score + 10;
-    localStorage.setItem("score", score);
     preview.style.background = color;
     hex.textContent = color.toUpperCase();
 
@@ -167,7 +165,12 @@ function copy(el){
     navigator.clipboard.writeText(el.textContent);
 }
 
-picker.addEventListener("input", e => update(e.target.value));
+picker.addEventListener("input", e => {
+  update(e.target.value);
+
+  score = score + 10;
+  localStorage.setItem("score", score);
+});
 update(picker.value);
 </script>
 
